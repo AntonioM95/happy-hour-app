@@ -3,8 +3,10 @@ import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import NavigationBar from '../Navigation/NavigationBar';
 import MainDisplay from '../MainDisplay/MainDisplay';
 import HappyHour from '../../HappyHour';
-import StartSearch from '../../Components/StartSearch/StartSearch'
-import Footer from '../../Controllers/Footer/Footer'
+import StartSearch from '../../Components/StartSearch/StartSearch';
+import Specials from '../../Components/Specials/Specials'
+import Footer from '../../Controllers/Footer/Footer';
+import './Main.css'
 class Main extends Component{
     constructor(props){
         super(props);
@@ -31,16 +33,23 @@ class Main extends Component{
         return(
             <div className="container">
             <NavigationBar></NavigationBar>
-            <Route path="/" exact render = {(props) => <StartSearch {...props}
-                handleSearch={(e) => this.handleSearch(e)}
-            />}
-            />
-
+            <div className="Main-Wrapper vertical-center">
+                <Route path="/" exact render = {(props) => <StartSearch {...props}
+                    handleSearch={(e) => this.handleSearch(e)}
+                />}
+                />
+                
+                <Route path="/specials" exact render = {(props) => <Specials {...props}
+                    handleSearch={(e) => this.handleSearch(e)}
+                    dataSet = {mainDataSet}
+                />}
+                />
+            </div>
            
-            <MainDisplay
+            {/* <MainDisplay
                 getModels = {HappyHour.getModels()}
                 dataSet = {mainDataSet}
-            ></MainDisplay>
+            ></MainDisplay> */}
 
             <Footer></Footer>
             </div>

@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 import HappyHour from '../../HappyHour'
+import { BrowserRouter as Router, useHistory, withRouter, Route, Link,Redirect } from "react-router-dom";
+
 import './Specials.css'
 
 class Specials extends Component{
@@ -167,8 +169,4 @@ class Specials extends Component{
     }
 }
 
-export default HappyHour.registerModel({
-    path: '/specials',
-    Component: Specials,
-    title: 'Specials'
-}) 
+export default withRouter(Specials);
