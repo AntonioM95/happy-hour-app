@@ -1,42 +1,11 @@
-import React, {Component} from 'react'
-import HappyHour from '../../HappyHour'
-import { BrowserRouter as Router, useHistory, withRouter, Route, Link,Redirect } from "react-router-dom";
-import SpecialsFeed from '../../Addons/SpecialsFeed';
-import './Specials.css'
-import RestaurantDetails from '../../Addons/RestaurantDetailsModal'
+import React from "react"
 
-class Specials extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            searchResults : []
-        }
-    }
+const SpecialsFeed = (props) => {
+    const {onRestaurantClick} = props;
 
-    componentDidMount(){
-        console.log("mounted")
-    }
-
-    getAllData(){
-
-    }
-
-    onRestaurantDetail(){
-        HappyHour.event.on("Some name");
-    }
-    
-    render(){
-        const {dataSet} = this.props;
-        return(
-            <div className="Specials-Container row">
-                
-                <div className= "col col-5 specials-wrapper ">
-                    <SpecialsFeed 
-                        onRestaurantClick = {(e) => this.onRestaurantDetail(e)}>
-
-                    </SpecialsFeed>
-                    {/* <div className="specials-wrapper">
-                    <button type="button" className=" btn row card btn-block">
+    return(
+        <div className="specials-wrapper">
+                    <button type="button" className=" btn row card btn-block" onClick={(e) => onRestaurantClick()}>
                     
                         <img className="card-img-top" src="..." alt="Card image cap"/>
                         <div className="card-body">
@@ -165,17 +134,8 @@ class Specials extends Component{
                     </div>
                
                 </button>
-                </div> */}
                 </div>
-
-                <div className="col col-7">
-                    <div className="map-wrapper">
-                         map
-                    </div>
-                </div>
-            </div>
-        )
-    }
+    );
 }
 
-export default withRouter(Specials);
+export default SpecialsFeed;

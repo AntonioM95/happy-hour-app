@@ -12,7 +12,9 @@ class Main extends Component{
         super(props);
         this.state = {
             mainWindow: null,
-            mainDataSet: null
+            mainDataSet: null,
+            searchDetails: [],
+            showModal: false
         }
     }
     
@@ -20,13 +22,29 @@ class Main extends Component{
     componentDidMount(){
         
     }
+    
+    showModal = e => {
+        this.setState({
+          show: true
+        });
+    };
 
-    handleSearch = (dataset) =>{
-        console.log(dataset)
-        this.setState({mainDataSet: dataset});
+    handleSearch = () =>{
+        const { searchDetails } = this.state;
+        console.log(searchDetails);
     }
 
+    handleSearchChange = (event) =>{
+        const { searchDetails } = this.state;
 
+        const target = event.target;
+        const name = target.name;
+        const value = target.value;
+        console.log(name, " : ", value);
+        
+        searchDetails[name] = value;
+        this.setState({searchDetails});
+    }
     render(){
         const { mainWindow, mainDataSet } = this.state;
         
@@ -36,12 +54,14 @@ class Main extends Component{
             <div className="Main-Wrapper vertical-center">
                 <Route path="/" exact render = {(props) => <StartSearch {...props}
                     handleSearch={(e) => this.handleSearch(e)}
+                    handleSearchChange={ (e) => this.handleSearchChange(e)}
                 />}
                 />
                 
                 <Route path="/specials" exact render = {(props) => <Specials {...props}
                     handleSearch={(e) => this.handleSearch(e)}
                     dataSet = {mainDataSet}
+                    handleSearchChange={ (e) => this.handleSearchChange(e)}
                 />}
                 />
             </div>
