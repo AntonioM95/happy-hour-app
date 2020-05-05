@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-i//mport HappyHour from '../../HappyHour';
+//mport HappyHour from '../../HappyHour';
 //import Icon from '../../components/Icon/Icon';
 //import './Modal.css';
+import HappyHour from '../../HappyHour'
 class Modal extends Component {  
     constructor(props) {    
         super(props);    
         this.state = {      
-            open: false,      
-            optionsCache: null    
+            open: false
         };  
     }
   
@@ -42,12 +42,11 @@ class Modal extends Component {  
 //     }
 
     toggleModal(close) {    
-        const { open, optionsCache } = this.state;    
+        const { open } = this.state;    
         const { options } = this.props;    
-        if (optionsCache !== options || close) {      
+        if (close) {      
             this.setState({        
-                open: !open,        
-                optionsCache: options      
+                open: !open  
             });    
         }  
     }
@@ -97,7 +96,7 @@ class Modal extends Component {  
                     {title === false ? null : (              
                         <div className="modal-header">                
                         <h5 className="modal-title">                  
-                        {props.icon ? <Icon src={props.icon} /> : null}                  
+                        {/* {props.icon ? <Icon src={props.icon} /> : null}                   */}
                         {title}                 
                         <div className="d-inline-block modal-header-registry">                    
                             {/* {this.getHeaderRegistry()}                   */}

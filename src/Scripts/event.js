@@ -4,7 +4,7 @@ const event = (element, native) => ({
     },
     on: (eName, callback) => {
         const execEvent = (name) => {
-            return element.addEventListen(name, (e) =>
+            return element.addEventListener(name, (e) =>
                 callback(native ? e : e.detail, e, name)    
             )
         }

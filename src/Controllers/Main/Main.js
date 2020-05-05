@@ -7,6 +7,7 @@ import StartSearch from '../../Components/StartSearch/StartSearch';
 import Specials from '../../Components/Specials/Specials'
 import Footer from '../../Controllers/Footer/Footer';
 import './Main.css'
+import Modal from '../../Components/Modals/Modal'
 class Main extends Component{
     constructor(props){
         super(props);
@@ -14,13 +15,29 @@ class Main extends Component{
             mainWindow: null,
             mainDataSet: null,
             searchDetails: [],
-            showModal: false
+            showModal: false, 
+            AppModal: null
         }
     }
     
 
     componentDidMount(){
-        
+        HappyHour.event.on('renderModalComponent',
+        (event) => {
+            this.setState(
+            {
+                AppModaal: null
+            },
+            () => {
+                this.setState(
+                {
+                    AppModal: event.detail
+                })
+            }
+            )
+        }, 
+        'isNative'
+        )
     }
     
     showModal = e => {
@@ -46,7 +63,7 @@ class Main extends Component{
         this.setState({searchDetails});
     }
     render(){
-        const { mainWindow, mainDataSet } = this.state;
+        const { mainWindow, mainDataSet, AppModal } = this.state;
         
         return(
             <div className="container">
@@ -72,6 +89,8 @@ class Main extends Component{
             ></MainDisplay> */}
 
             <Footer></Footer>
+
+            {!AppModal ? null : <Modal  options= {AppModal}></Modal>}
             </div>
         )
     }
