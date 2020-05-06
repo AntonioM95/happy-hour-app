@@ -17,7 +17,7 @@ class NavigationBar extends Component{
     render(){
         const { navigation } = this.state;
         return(
-           <div>
+           <div className="Navigation-wrapper">
                This is the nav
            </div>
         );

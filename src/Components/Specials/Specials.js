@@ -2,31 +2,48 @@ import React, {Component} from 'react'
 import HappyHour from '../../HappyHour'
 import { BrowserRouter as Router, useHistory, withRouter, Route, Link,Redirect } from "react-router-dom";
 import SpecialsFeed from '../../Addons/SpecialsFeed';
-import './Specials.css'
+import './Specials.css';
+import Modal from '../Modals/Modal1'
 import RestaurantDetails from '../../Addons/RestaurantDetailsModal'
-
+import TestClass from '../../Models/RestaurantDetails/RestaurantDetails'
 class Specials extends Component{
     constructor(props){
         super(props);
         this.state = {
-            searchResults : []
+            searchResults : [],
+            AppModal: null
         }
     }
 
     componentDidMount(){
         console.log("mounted")
+
+        // HappyHour.event.on('renderModalComponent', 
+        // (event) => {
+        //     console.log(event.detail)
+        //     this.setState({AppModal: null},
+        //         () => {
+        //             this.setState({AppModal: event.detail})
+        //         })
+        // }, 'isNative')
     }
 
     getAllData(){
+        
+    }
 
+    componentDidUpdate(){
+        
+      
     }
 
     onRestaurantDetail(){
-        HappyHour.event.on("Some name");
+        HappyHour.renderModalComponent(TestClass, "Some Title", {fillscreen: true});
     }
     
     render(){
-        const {dataSet} = this.props;
+        const {dataSet, AppModal} = this.state;
+        console.log(AppModal, "kdfjdlkjf");
         return(
             <div className="Specials-Container row">
                 
@@ -173,6 +190,9 @@ class Specials extends Component{
                          map
                     </div>
                 </div>
+
+               
+
             </div>
         )
     }

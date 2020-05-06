@@ -11,7 +11,7 @@ const SpecialsFeed = (props) => {
                         <div className="card-body">
                         <div className="description row">
                         <div className="col col-10">
-                        <h5 className="card-title">Restaurant title</h5>
+                        <h5 className="card-title">Restaurant title here</h5>
                         
                         </div>
                         <span className="badge badge-success active-status">Active</span>

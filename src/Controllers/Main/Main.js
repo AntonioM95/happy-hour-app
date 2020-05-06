@@ -6,49 +6,41 @@ import HappyHour from '../../HappyHour';
 import StartSearch from '../../Components/StartSearch/StartSearch';
 import Specials from '../../Components/Specials/Specials'
 import Footer from '../../Controllers/Footer/Footer';
+import Modal from '../../Components/Modals/Modal1'
 import './Main.css'
-import Modal from '../../Components/Modals/Modal'
 class Main extends Component{
     constructor(props){
         super(props);
         this.state = {
             mainWindow: null,
             mainDataSet: null,
-            searchDetails: [],
-            showModal: false, 
+            searchDetails: [], 
             AppModal: null
         }
     }
     
 
     componentDidMount(){
-        HappyHour.event.on('renderModalComponent',
+        HappyHour.event.on('renderModalComponent', 
         (event) => {
-            this.setState(
-            {
-                AppModaal: null
-            },
-            () => {
-                this.setState(
-                {
-                    AppModal: event.detail
+            console.log(event.detail)
+            this.setState({AppModal: null},
+                () => {
+                    this.setState({AppModal: event.detail})
+                }, 
+                () => {
+                    HappyHour.event.trigger('renderModalComponent-done');
                 })
-            }
-            )
-        }, 
-        'isNative'
-        )
+        }, 'isNative')
     }
-    
-    showModal = e => {
-        this.setState({
-          show: true
-        });
-    };
 
     handleSearch = () =>{
         const { searchDetails } = this.state;
         console.log(searchDetails);
+    }
+
+    handleModalClose =() => {
+        this.setState({AppModal: false})
     }
 
     handleSearchChange = (event) =>{
@@ -87,10 +79,8 @@ class Main extends Component{
                 getModels = {HappyHour.getModels()}
                 dataSet = {mainDataSet}
             ></MainDisplay> */}
-
+             {!AppModal ? null: <Modal options = {AppModal} handleModalClose ={() => this.handleModalClose()}/>}
             <Footer></Footer>
-
-            {!AppModal ? null : <Modal  options= {AppModal}></Modal>}
             </div>
         )
     }

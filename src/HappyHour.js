@@ -1,5 +1,5 @@
-import React from 'react'
-import event from '../src/Scripts/event'
+import event from './HappyHour-event'
+
 window.Models = [];
 const registerModel = (model) => {
     window.Models.push(model);
@@ -11,19 +11,23 @@ const getModels = () => {
 }
 
 const renderModalComponent = (Component, title, props) => {
-    const renderModalComponentPromise = new Promise((resolve) =>{
+    const renderModelComponentPromise = new Promise((resolve) => {
+        console.log(Component)
         window.dispatchEvent(
-          new CustomEvent('renderModalComponent', {
-              detail: {
-                  Component,
-                  props: props || {},
-                  title: title || ''
-              }
-          })  
-        );
+            new CustomEvent("renderModalComponent", {
+                detail: {
+                    Component,
+                    props: props || {},
+                    title: title || ""
+                }
+            }
+        ));
+        event.on('renderModalComponent-done', () =>{
+            resolve(window.document.getElementById('HappyHourModalComponent'));
+        })
     });
 
-    return renderModalComponent;
+    return renderModelComponentPromise;
 }
 const HappyHour = {
     getModels,
@@ -31,7 +35,5 @@ const HappyHour = {
     renderModalComponent,
     event
 }
-
-
 
 export default HappyHour;

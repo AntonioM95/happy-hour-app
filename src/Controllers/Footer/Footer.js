@@ -17,7 +17,7 @@ class Footer extends Component{
     render(){
         
         return(
-           <div>
+           <div className="Footer-Wrapper">
                This is the footer
            </div>
         );

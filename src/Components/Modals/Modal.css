@@ -1,6 +1,19 @@
+.modal-fillscreen .modal-dialog{
+    overflow: hidden;
+    max-width: 900px;
+}
 
+.modal-fillscreen.modal.d-block .modal-content {
+    margin-top: 0;
+}
 
+.modal-fillscreen .modal-content {
+    height: 90%;
+    display: block;
+}
 
-  #HappyHourModalComponent {
-    background: black;
-  }
+.modal-fillscreen .modal-content .modal-body {
+    height: calc(100% - 80px);
+    max-height: 100%;
+}
+
