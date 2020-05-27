@@ -6,6 +6,7 @@ import './Specials.css';
 import Modal from '../Modals/Modal1'
 import RestaurantDetails from '../../Addons/RestaurantDetailsModal'
 import TestClass from '../../Models/RestaurantDetails/RestaurantDetails'
+import Map from '../../HOC/GoogleMaps'
 class Specials extends Component{
     constructor(props){
         super(props);
@@ -52,143 +53,20 @@ class Specials extends Component{
                         onRestaurantClick = {(e) => this.onRestaurantDetail(e)}>
 
                     </SpecialsFeed>
-                    {/* <div className="specials-wrapper">
-                    <button type="button" className=" btn row card btn-block">
-                    
-                        <img className="card-img-top" src="..." alt="Card image cap"/>
-                        <div className="card-body">
-                        <div className="description row">
-                        <div className="col col-10">
-                        <h5 className="card-title">Restaurant title</h5>
-                        
-                        </div>
-                        <span className="badge badge-success active-status">Active</span>
-                        </div>
-                        <p className="card-text">Todays Restaurant specials are</p>
-                        </div>
                    
-                    </button>
-                    <button type="button" className=" btn row card btn-block">
-                    
-                    <img className="card-img-top" src="..." alt="Card image cap"/>
-                    <div className="card-body">
-                    <div className="description row">
-                    <div className="col col-10">
-                    <h5 className="card-title">Restaurant title</h5>
-                    
-                    </div>
-                    <span className="badge badge-success active-status">Active</span>
-                    </div>
-                    <p className="card-text">Todays Restaurant specials are</p>
-                    </div>
-               
-                </button><button type="button" className=" btn row card btn-block">
-                    
-                    <img className="card-img-top" src="..." alt="Card image cap"/>
-                    <div className="card-body">
-                    <div className="description row">
-                    <div className="col col-10">
-                    <h5 className="card-title">Restaurant title</h5>
-                    
-                    </div>
-                    <span className="badge badge-success active-status">Active</span>
-                    </div>
-                    <p className="card-text">Todays Restaurant specials are</p>
-                    </div>
-               
-                </button><button type="button" className=" btn row card btn-block">
-                    
-                    <img className="card-img-top" src="..." alt="Card image cap"/>
-                    <div className="card-body">
-                    <div className="description row">
-                    <div className="col col-10">
-                    <h5 className="card-title">Restaurant title</h5>
-                    
-                    </div>
-                    <span className="badge badge-success active-status">Active</span>
-                    </div>
-                    <p className="card-text">Todays Restaurant specials are</p>
-                    </div>
-               
-                </button><button type="button" className=" btn row card btn-block">
-                    
-                    <img className="card-img-top" src="..." alt="Card image cap"/>
-                    <div className="card-body">
-                    <div className="description row">
-                    <div className="col col-10">
-                    <h5 className="card-title">Restaurant title</h5>
-                    
-                    </div>
-                    <span className="badge badge-success active-status">Active</span>
-                    </div>
-                    <p className="card-text">Todays Restaurant specials are</p>
-                    </div>
-               
-                </button>
-                <button type="button" className=" btn row card btn-block">
-                    
-                        <img className="card-img-top" src="..." alt="Card image cap"/>
-                        <div className="card-body">
-                        <div className="description row">
-                        <div className="col col-10">
-                        <h5 className="card-title">Restaurant title</h5>
-                        
-                        </div>
-                        <span className="badge badge-success active-status">Active</span>
-                        </div>
-                        <p className="card-text">Todays Restaurant specials are</p>
-                        </div>
-                   
-                    </button><button type="button" className=" btn row card btn-block">
-                    
-                    <img className="card-img-top" src="..." alt="Card image cap"/>
-                    <div className="card-body">
-                    <div className="description row">
-                    <div className="col col-10">
-                    <h5 className="card-title">Restaurant title</h5>
-                    
-                    </div>
-                    <span className="badge badge-success active-status">Active</span>
-                    </div>
-                    <p className="card-text">Todays Restaurant specials are</p>
-                    </div>
-               
-                </button><button type="button" className=" btn row card btn-block">
-                    
-                    <img className="card-img-top" src="..." alt="Card image cap"/>
-                    <div className="card-body">
-                    <div className="description row">
-                    <div className="col col-10">
-                    <h5 className="card-title">Restaurant title</h5>
-                    
-                    </div>
-                    <span className="badge badge-success active-status">Active</span>
-                    </div>
-                    <p className="card-text">Todays Restaurant specials are</p>
-                    </div>
-               
-                </button><button type="button" className=" btn row card btn-block">
-                    
-                    <img className="card-img-top" src="..." alt="Card image cap"/>
-                    <div className="card-body">
-                    <div className="description row">
-                    <div className="col col-10">
-                    <h5 className="card-title">Restaurant title</h5>
-                    
-                    </div>
-                    <span className="badge badge-success active-status">Active</span>
-                    </div>
-                    <p className="card-text">Todays Restaurant specials are</p>
-                    </div>
-               
-                </button>
-                </div> */}
                 </div>
 
-                <div className="col col-7">
-                    <div className="map-wrapper">
-                         map
-                    </div>
+                <div >
+                    <div className="col" style={{width: '30vw', height: '80vh'}}>
+                     <Map 
+                            googleMapURL= {'https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCU_9a20rCg5bIT3nWQTFftAZB9EDc8qNc'}
+                            loadingElement = {<div style = {{ height: "100%"}}></div>}
+                            containerElement = {<div style = {{ height: "100%"}}> </div>}
+                            mapElement = { <div style = {{ height: "100%"}}></div>}
+                        >
+                        </Map>
+                        </div>  
+                   
                 </div>
 
                
