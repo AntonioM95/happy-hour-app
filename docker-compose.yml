@@ -1,0 +1,15 @@
+version: "2"
+services:
+    happyhour:
+        container_name: happy_hour_app
+        image: happyhourapp:latest
+        restart: unless-stopped
+        ports:
+            - "5000:5000"
+        env_file: database.conf
+
+    database:
+        image: postgres:latest
+        env_file: database.conf
+        volumes:
+            - ./data/postgresql:/var/lib/postgresql/data
